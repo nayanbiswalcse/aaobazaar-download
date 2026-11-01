@@ -1,8 +1,8 @@
 {
-    "version":  "",
-    "file":  "",
-    "size_bytes":  0,
-    "sha256":  "",
-    "date":  "",
-    "state":  "pending"
+    "version":  "1.0.4",
+    "file":  "aaobazaar.apk",
+    "size_bytes":  43012212,
+    "sha256":  "1326002ab1f3bd40a7d0e54ffbef99a4498eb97edad150d108e5301314107855",
+    "date":  "2026-11-01T01:01:54Z",
+    "state":  "published"
 }
