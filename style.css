@@ -121,12 +121,13 @@ h2 .accent { width: 6px; height: 22px; min-height: 0; border-radius: 3px; backgr
 .dl-hero { padding: 32px 0 16px; }
 .dl-card { margin-top: 24px; }
 .pending { margin-top: 12px; text-align: center; font-size: 18px; line-height: 26px; font-weight: 700; color: var(--primary-pressed); }
-.facts { margin: 20px 0 0; display: grid; grid-template-columns: max-content 1fr; gap: 8px 16px; font-size: 15px; line-height: 22px; }
+.facts { margin: 20px 0 0; display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 8px 16px; font-size: 15px; line-height: 22px; }
 .facts dt { color: var(--text-2); font-weight: 700; }
 .facts dd { margin: 0; min-width: 0; }
-.facts code { font-family: ui-monospace, Consolas, "Courier New", monospace; font-size: 12px; line-height: 18px; overflow-wrap: anywhere; }
+.facts code { font-family: ui-monospace, Consolas, "Courier New", monospace; font-size: 12px; line-height: 18px; word-break: break-all; overflow-wrap: anywhere; }
 .dl-more { padding: 8px 0 16px; }
-.dl-grid { display: grid; gap: 16px; }
+.dl-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; }
+.dl-grid > *, .dl-card { min-width: 0; }
 .steps { margin: 0; padding-left: 22px; }
 .steps li { margin-top: 10px; padding-left: 4px; }
 .note { margin-top: 12px; color: var(--text-2); font-size: 14px; line-height: 20px; }
@@ -139,7 +140,7 @@ h2 .accent { width: 6px; height: 22px; min-height: 0; border-radius: 3px; backgr
 @media (min-width: 900px) {
   .dl-hero { padding: 56px 0 24px; }
   .dl-card { max-width: 560px; }
-  .dl-grid { grid-template-columns: 1fr 1fr; align-items: start; }
+  .dl-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: start; }
 }
 
 /* secondary button under the main Download APK button: "Alternative download" / "Main download" (P26-04) */
@@ -147,3 +148,12 @@ h2 .accent { width: 6px; height: 22px; min-height: 0; border-radius: 3px; backgr
 .btn-alt { width: 100%; min-height: 48px; background: var(--card); color: var(--primary); border: 2px solid var(--primary); box-shadow: none; }
 .btn-alt:hover { background: var(--primary-soft); color: var(--primary-pressed); }
 .alt-note { margin-top: 6px; color: var(--text-2); font-size: 13px; line-height: 18px; }
+
+/* phones (P26-05): the version table stacks (label above value) so the 64-character sha256 gets the whole card width */
+@media (max-width: 479px) {
+  .facts { grid-template-columns: minmax(0, 1fr); gap: 0; }
+  .facts dt { margin-top: 12px; }
+  .facts dt:first-child { margin-top: 0; }
+  .facts dd { margin-top: 2px; }
+  .facts code { display: block; }
+}
