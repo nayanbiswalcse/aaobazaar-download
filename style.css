@@ -1,0 +1,143 @@
+/* Aaobazaar landing page. Static, no JavaScript, no external requests.
+   Tokens are the decided Stitch values (docs/Aaobazaar_Design_Tokens_Reconciliation.md, mobile/src/theme/tokens.ts).
+   Manrope is self-hosted (SIL OFL 1.1, see fonts/OFL-Manrope.txt). */
+@font-face { font-family: "Manrope"; font-weight: 400; font-style: normal; font-display: swap; src: url("fonts/manrope-400.woff2") format("woff2"); }
+@font-face { font-family: "Manrope"; font-weight: 700; font-style: normal; font-display: swap; src: url("fonts/manrope-700.woff2") format("woff2"); }
+@font-face { font-family: "Manrope"; font-weight: 800; font-style: normal; font-display: swap; src: url("fonts/manrope-800.woff2") format("woff2"); }
+
+:root {
+  --canvas: #f6fbf5;
+  --card: #ffffff;
+  --text: #181d1a;
+  --text-2: #59413b;
+  --primary: #a9310f;
+  --primary-pressed: #881f00;
+  --primary-soft: #ffdbd1;
+  --green: #1b6d24;
+  --green-soft: rgba(160, 243, 153, 0.35);
+  --blue: #005cab;
+  --blue-soft: #d4e3ff;
+  --stone: #dfe4df;
+  --outline-variant: #e1bfb7;
+  --r-card: 20px;
+  --r-default: 16px;
+  --r-sheet: 32px;
+  --shadow-card: 0 2px 12px rgba(169, 49, 15, 0.06);
+  --shadow-banner: 0 6px 20px rgba(169, 49, 15, 0.22);
+  --font: "Manrope", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--canvas); color: var(--text); font-family: var(--font); font-size: 16px; line-height: 24px; }
+img { display: block; max-width: 100%; height: auto; }
+h1, h2, p, ul { margin: 0; }
+ul { padding: 0; list-style: none; }
+
+.wrap { width: 100%; max-width: 1080px; margin-inline: auto; padding-inline: 16px; }
+
+:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; border-radius: 6px; }
+.skip { position: absolute; left: 16px; top: -60px; background: var(--primary); color: #fff; padding: 12px 16px; border-radius: 999px; font-weight: 700; text-decoration: none; z-index: 10; }
+.skip:focus { top: 12px; }
+
+/* header */
+.site-header { background: var(--card); box-shadow: 0 -4px 20px rgba(24, 29, 26, 0.06) inset, 0 2px 12px rgba(169, 49, 15, 0.06); }
+.topbar { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 64px; }
+.brand { display: inline-flex; align-items: center; gap: 10px; color: var(--text); text-decoration: none; }
+.brand-mark { width: 40px; height: 40px; }
+.brand-name { font-size: 22px; line-height: 28px; font-weight: 800; letter-spacing: -0.01em; }
+
+.chip { display: inline-flex; align-items: center; min-height: 36px; padding: 0 16px; border-radius: 999px; font-size: 14px; line-height: 18px; font-weight: 700; letter-spacing: 0.02em; }
+.chip-place { background: var(--stone); color: var(--text); }
+.chip-soon { background: var(--primary-soft); color: var(--primary-pressed); }
+
+/* hero */
+.hero { padding: 32px 0 24px; }
+.hero-grid { display: grid; gap: 24px; align-items: center; }
+.kicker { color: var(--primary); font-size: 14px; line-height: 18px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 12px; }
+h1 { font-size: 28px; line-height: 34px; font-weight: 800; letter-spacing: -0.01em; }
+.subline { margin-top: 12px; color: var(--text-2); font-size: 18px; line-height: 26px; }
+.soon { margin-top: 20px; }
+.hero-logo { display: flex; justify-content: center; background: var(--card); border-radius: var(--r-sheet); padding: 32px 24px; box-shadow: var(--shadow-card); }
+.logo { width: min(100%, 420px); height: auto; }
+
+/* categories */
+.cats { padding: 16px 0 32px; }
+h2 { display: flex; align-items: center; gap: 10px; font-size: 20px; line-height: 26px; font-weight: 700; margin-bottom: 16px; }
+h2 .accent { width: 6px; height: 22px; min-height: 0; border-radius: 3px; background: var(--primary); display: inline-block; }
+.cat-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+.cat { display: flex; align-items: flex-end; min-height: 96px; padding: 16px; border-radius: var(--r-card); font-size: 16px; line-height: 22px; font-weight: 700; box-shadow: var(--shadow-card); }
+.cat-grocery { background: var(--primary-soft); color: var(--primary-pressed); }
+.cat-dairy { background: #d9f5d6; color: var(--green); }
+.cat-bakery { background: var(--stone); color: var(--text-2); }
+.cat-grid .cat:last-child:nth-child(odd) { grid-column: 1 / -1; }
+
+/* app notice */
+.app { padding: 32px 0; }
+.card { background: var(--card); border-radius: var(--r-sheet); padding: 24px; box-shadow: var(--shadow-card); }
+.card h2 { margin-bottom: 8px; }
+.card p { color: var(--text-2); }
+
+.site-footer { padding: 24px 0 40px; color: var(--text-2); font-size: 14px; line-height: 20px; }
+.site-footer p { margin-top: 4px; }
+.site-footer a { color: var(--primary-pressed); }
+.footer-links { display: flex; flex-wrap: wrap; gap: 0 20px; margin-bottom: 12px; }
+.footer-links a { display: inline-block; padding: 10px 0; font-weight: 700; }
+.site-footer .owner { color: var(--text); font-weight: 700; }
+
+/* policy and contact pages (same header and footer as the landing page) */
+.doc { padding-block: 32px 16px; }
+.doc h1 { font-size: 28px; line-height: 34px; }
+.doc .updated { margin-top: 8px; color: var(--text-2); font-size: 14px; line-height: 20px; }
+.doc h2 { display: block; margin: 28px 0 0; }
+.doc p, .doc li { max-width: 68ch; }
+.doc p { margin-top: 8px; }
+.doc ul { list-style: disc; padding-left: 24px; margin-top: 8px; }
+.doc li { margin-top: 4px; }
+.doc a { color: var(--primary-pressed); font-weight: 700; }
+.doc .card { margin-top: 16px; }
+.doc .card p:first-child { margin-top: 0; }
+
+@media (min-width: 900px) {
+  .hero { padding: 64px 0 48px; }
+  .hero-grid { grid-template-columns: 1.1fr 0.9fr; gap: 48px; }
+  h1 { font-size: 40px; line-height: 48px; letter-spacing: -0.02em; }
+  .hero-logo { padding: 48px 40px; }
+  .cat-grid { grid-template-columns: repeat(3, 1fr); }
+  .cat-grid .cat:last-child:nth-child(odd) { grid-column: auto; }
+  .doc h1 { font-size: 34px; line-height: 42px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+}
+
+/* download page (/download/, P26-01): same tokens as the landing page */
+.btn { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 28px; border: 0; border-radius: 999px; background: var(--primary); color: #fff; font-family: inherit; font-size: 16px; line-height: 22px; font-weight: 800; letter-spacing: 0.01em; text-decoration: none; cursor: pointer; box-shadow: var(--shadow-banner); }
+.btn:hover { background: var(--primary-pressed); }
+.btn-lg { width: 100%; min-height: 60px; font-size: 20px; line-height: 26px; }
+.btn:disabled, .btn[aria-disabled="true"] { background: var(--stone); color: var(--text-2); box-shadow: none; cursor: not-allowed; }
+.cta { margin-top: 20px; }
+.dl-hero { padding: 32px 0 16px; }
+.dl-card { margin-top: 24px; }
+.pending { margin-top: 12px; text-align: center; font-size: 18px; line-height: 26px; font-weight: 700; color: var(--primary-pressed); }
+.facts { margin: 20px 0 0; display: grid; grid-template-columns: max-content 1fr; gap: 8px 16px; font-size: 15px; line-height: 22px; }
+.facts dt { color: var(--text-2); font-weight: 700; }
+.facts dd { margin: 0; min-width: 0; }
+.facts code { font-family: ui-monospace, Consolas, "Courier New", monospace; font-size: 12px; line-height: 18px; overflow-wrap: anywhere; }
+.dl-more { padding: 8px 0 16px; }
+.dl-grid { display: grid; gap: 16px; }
+.steps { margin: 0; padding-left: 22px; }
+.steps li { margin-top: 10px; padding-left: 4px; }
+.note { margin-top: 12px; color: var(--text-2); font-size: 14px; line-height: 20px; }
+.qr-card { text-align: center; }
+.qr-card h2 { justify-content: flex-start; text-align: left; }
+.qr { width: 100%; max-width: 222px; height: auto; margin: 0 auto; border-radius: 12px; }
+.dl-help { padding: 8px 0 16px; color: var(--text-2); }
+.dl-help a { color: var(--primary-pressed); font-weight: 700; }
+.dl-help .alt { margin-top: 8px; font-size: 14px; line-height: 20px; }
+@media (min-width: 900px) {
+  .dl-hero { padding: 56px 0 24px; }
+  .dl-card { max-width: 560px; }
+  .dl-grid { grid-template-columns: 1fr 1fr; align-items: start; }
+}
